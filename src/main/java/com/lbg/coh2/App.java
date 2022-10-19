@@ -1,23 +1,38 @@
 package com.lbg.coh2;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 /**
  * Hello world!
- *
+	 *
  */
 public class App 
 {
-    public static void main( String[] args ) throws IOException
+    public static void main( String[] args )
     {
-        System.out.print( "Enter a message: " );
+        String lineRead;
+        boolean whileContinue = true;
+        Scanner sc = new Scanner(System.in);
         
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        prompt();
+        lineRead = sc.next();
+
+        while( whileContinue && lineRead != null )
+        {
+            System.out.println(lineRead);
+            prompt();
+            lineRead = sc.next();      
+            if( lineRead.equalsIgnoreCase("quit") )
+            	whileContinue = false;
+        }   
         
-        String dataRead = br.readLine();
-        
-        System.out.println("=> " + dataRead);
+        System.out.println( "Program Ended");
     }
+    
+    
+    static private void prompt()
+    {
+        System.out.print("Press a key:");
+    }
+
 }
